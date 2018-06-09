@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import keyGen from 'uniqid';
 
+// firebase depends
+import FirebaseAuth from 'react-firebaseui';
+import Firebase from 'firebase';
+
 // style components/helpers
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
