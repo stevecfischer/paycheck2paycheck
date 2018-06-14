@@ -2,8 +2,8 @@ import keyGen from 'uniqid';
 
 export default {
   state: {
-    access_token: 'access-development-7fc59fcb-8237-40ad-a4fa-1ce30ea5d80a',
-    item_id: 'yrnNvpVk18iR3ayzzpzBiz3q8oxggKHOMxZBy',
+    access_token: '',
+    item_id: '',
     currentMonth: 'January',
     headerText: 'My Header',
     dayOfMonth: "",
