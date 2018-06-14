@@ -41,10 +41,10 @@ export function firebaseInit(getSavedState = false) {
   }
 }
 
-export function pushState() {
+export function pushState(reactState) {
   const itemsRef = database.ref('app');
   const item = {
-    state: { ...this.state },
+    state: { ...reactState },
   };
   itemsRef.set(item);
 }
