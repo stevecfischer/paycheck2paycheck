@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fcbe095a-765e-4573-ad89-8695cfafa37d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bak.babelrc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PlaidLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PlaidLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/initialState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,38 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App.js">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/firebase/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="initialState.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/initialState.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaidLink.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/PlaidLink.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+            <state relative-caret-position="693">
+              <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -93,12 +63,12 @@
         <option value="$PROJECT_DIR$/src/helpers/utils.js" />
         <option value="$PROJECT_DIR$/src/components/CurrentBalance.js" />
         <option value="$PROJECT_DIR$/src/firebase/auth.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/src/initialState.js" />
         <option value="$PROJECT_DIR$/src/components/PlaidLink.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/firebase/index.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -220,12 +190,12 @@
       <updated>1528434757225</updated>
       <workItem from="1528434758425" duration="4607000" />
       <workItem from="1528932764673" duration="7359000" />
-      <workItem from="1528942037044" duration="10909000" />
+      <workItem from="1528942037044" duration="11072000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31560000" />
+    <option name="totallyTimeSpent" value="31723000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="960" height="1173" extended-state="0" />
@@ -470,13 +440,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/@firebase/auth/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bak.babelrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -552,6 +515,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/firebase/auth.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/firebase/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/initialState.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -566,20 +546,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase/auth.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/firebase/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+        <state relative-caret-position="693">
+          <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
         </state>
       </provider>
     </entry>
