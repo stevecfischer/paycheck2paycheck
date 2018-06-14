@@ -1,15 +1,9 @@
 import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
+import { fbConfig } from "../configs";
 
-const config = {
-  apiKey: 'AIzaSyCdGHAwxLLbGT8ESGqQwXqnO0WaTmDNzX8',
-  authDomain: 'scfpay2pay.firebaseapp.com',
-  databaseURL: 'https://scfpay2pay.firebaseio.com',
-  projectId: 'scfpay2pay',
-  storageBucket: 'scfpay2pay.appspot.com',
-  messagingSenderId: '972824635265',
-};
+const config = {...fbConfig};
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const database = firebase.database();
