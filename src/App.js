@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import keyGen from 'uniqid';
 
-// firebase depends
-import FirebaseAuth from 'react-firebaseui';
-import Firebase from 'firebase';
-
 // style components/helpers
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+
+import ReactMoment from 'react-moment';
+import * as Moment from 'moment';
 
 // function components
 import Streams from './components/Streams';
@@ -15,6 +14,10 @@ import Totals from './components/Totals';
 import initialState from './initialState';
 import Header from './components/Header';
 import Gross from './components/Gross';
+import PlaidLink from './components/PlaidLink';
+import axios from "axios";
+import CurrentBalance from "./components/CurrentBalance";
+import {getCurrentBalance} from "./helpers/utils";
 
 const styles = theme => ({
   root: {
@@ -37,13 +40,15 @@ class App extends Component {
     this.state = initialState.state;
   }
 
-  componentDidMount(){
-    console.log(this.props, "");
+  componentDidMount() {
+    const dayOfMonth = Moment().format('D');
+
+    this.setState({
+      dayOfMonth,
+    })
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    console.log(nextProps, "nextProps");
-    console.log(nextState, "nextState");
+  shouldComponentUpdate(nextProps, nextState) {
     return true;
   }
 
@@ -69,21 +74,55 @@ class App extends Component {
     })
   };
 
-  handleRemoveItem = (streamType, expenseKey) =>{
+  handleRemoveItem = (streamType, expenseKey) => {
     this.setState({
-      [streamType] : this.state[streamType].filter((item) => item.key !== expenseKey)
+      [streamType]: this.state[streamType].filter((item) => item.key !== expenseKey)
+    });
+  };
+
+  handleOnBalance = () => {
+    axios
+      .post(`http://localhost:8000/accounts/balance/get`, {
+        access_token: this.state.access_token,
+      })
+      .then(res => {
+        const currentBalance = getCurrentBalance(res.data);
+        console.log(currentBalance[0], "currentBalance");
+        this.setState({
+          currentBalance: currentBalance[0]
+        });
+        // get access token and send it to balance
+        // axios
+        //   .post(`http://localhost:8000/accounts/balance/get`, {
+        //     token,
+        //     metadata,
+        //   })
+        //   .then(res => {
+        //     console.log(res, 'res');
+        //     console.log(res.data);
+        //   });
+      });
+  }
+
+  setPlainTokens = (apiResponse) => {
+    this.setState({
+      access_token: apiResponse.access_token,
+      item_id: apiResponse.item_id,
     });
   };
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
 
     return (
       <Fragment>
         <div className={classes.root}>
           <Grid container justify="center" className="Header" spacing={24}>
             <Grid item md={4}>
-              <Header header="My Money App" />
+              <Header header="My Money App" handleOnBalance={this.handleOnBalance}/>
+              <PlaidLink
+                setPlaidTokens={this.setPlainTokens}
+              />
             </Grid>
           </Grid>
           <Grid
@@ -103,6 +142,10 @@ class App extends Component {
               />
             </Grid>
             <Grid item md={4}>
+              <CurrentBalance
+                header="Current State of affairs"
+                {...this.state}
+              />
               <Totals
                 header="Total Income"
                 streamType='incomes'

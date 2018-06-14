@@ -1,10 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 export default class Header extends Component {
 
   render() {
+
     return (
-      <h1>{this.props.header}</h1>
+      <Fragment>
+        <h1>{this.props.header}</h1>
+        <ul>
+          <li>
+            <a onClick={this.props.handleOnBalance}>Get Balance</a>
+          </li>
+        </ul>
+      </Fragment>
+
     );
   }
 }
