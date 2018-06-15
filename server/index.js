@@ -6,12 +6,14 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var plaid = require('plaid');
 
-var APP_PORT = 8000;
-var PLAID_CLIENT_ID = "5b1c21fb5ab5bd0011ec925f";
-var PLAID_SECRET = "27bf2ac9e7d2d4386c4fb11180c128"; //dev
-// var PLAID_SECRET = "d84c3d28aa8ac76afe808d9c7dc73b"; // sand
-var PLAID_PUBLIC_KEY = "14e48ac5877fcfe22503f1f09aa1c8";
-var PLAID_ENV = envvar.string('PLAID_ENV', 'development');
+const {
+  APP_PORT,
+  PLAID_CLIENT_ID,
+  PLAID_SECRET,
+  PLAID_SECRET_SAND,
+  PLAID_PUBLIC_KEY,
+  PLAID_ENV
+} = require('./secrets').plaidConfig;
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store

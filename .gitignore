@@ -11,6 +11,7 @@
 
 #secrets
 src/configs.js
+server/secrets.js
 
 # misc
 .DS_Store
