@@ -1,9 +1,10 @@
 import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
-import { fbConfig } from "../configs";
+import { FirebaseConfig } from "../configs";
 
-const config = {...fbConfig};
+const config = {...FirebaseConfig};
+
 firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const database = firebase.database();

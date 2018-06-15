@@ -18,7 +18,7 @@ import PlaidLink from './components/PlaidLink';
 import axios from 'axios';
 import CurrentBalance from './components/CurrentBalance';
 import { getCurrentBalance } from './helpers/utils';
-import { firebaseInit } from './firebase';
+import { firebaseInit , pushState} from './firebase';
 
 const styles = theme => ({
   root: {
@@ -39,15 +39,27 @@ class App extends Component {
     super(props);
 
     this.state = initialState.state;
+
+    firebaseInit();
   }
 
-  componentDidMount() {
-    firebaseInit();
 
+
+  componentDidMount() {
     this.setState({
       dayOfMonth: Moment().format('D'),
     });
   }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log(props, "props");
+    console.log(state, "state");
+    pushState(state);
+
+    const newState = [...state];
+    return newState;
+  }
+
 
   shouldComponentUpdate(nextProps, nextState) {
     return true;
