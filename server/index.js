@@ -5,15 +5,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var moment = require('moment');
 var plaid = require('plaid');
+var creds = require('./secrets');
 
-const {
-  APP_PORT,
-  PLAID_CLIENT_ID,
-  PLAID_SECRET,
-  PLAID_SECRET_SAND,
-  PLAID_PUBLIC_KEY,
-  PLAID_ENV
-} = require('./secrets').plaidConfig;
+var APP_PORT= creds.APP_PORT;
+var PLAID_CLIENT_ID= creds.PLAID_CLIENT_ID;
+var PLAID_SECRET= creds.PLAID_SECRET;
+var PLAID_SECRET_SAND= creds.PLAID_SECRET_SAND;
+var PLAID_PUBLIC_KEY= creds.PLAID_PUBLIC_KEY;
+var PLAID_ENV = creds.PLAID_ENV;
 
 // We store the access_token in memory - in production, store it in a secure
 // persistent data store
@@ -53,10 +52,11 @@ app.post('/get_access_token', function (request, response, next) {
   PUBLIC_TOKEN = request.body.public_token;
   client.exchangePublicToken(PUBLIC_TOKEN, function (error, tokenResponse) {
     if (error != null) {
-      var msg = 'Could not exchange public_token!';
-      console.log(msg + '\n' + JSON.stringify(error));
+      prettyP
+      // var msg = 'Could not exchange public_token!';
+      // console.log(msg + '\n' + JSON.stringify(error));
       return response.json({
-        error: msg
+        error: error,
       });
     }
 

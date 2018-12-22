@@ -50,6 +50,6 @@ export function getRemainingExpenses(streamItems,dayOfMonth) {
 
 export function getCurrentBalance(accounts) {
   return accounts.filter(i => {
-    return i.name === 'Joint acct';
+    return i.name === 'Plaid Saving';
   });
 }

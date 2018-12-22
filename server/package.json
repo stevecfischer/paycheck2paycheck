@@ -4,6 +4,8 @@
   "description": "A sample app and accompanying walkthrough for the Plaid API.",
   "main": "index.js",
   "scripts": {
+    "server": "NODE_ENV=production nodemon index.js",
+    "server:dev": "NODE_ENV=dev nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "developers@plaid.com",
@@ -15,7 +17,11 @@
     "envvar": "1.1.x",
     "express": "4.13.x",
     "moment": "^2.19.4",
-    "plaid": "2.6.x",
+    "plaid": "^2.10.0",
     "react-moment": "^0.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "express-debug": "^1.1.1"
   }
 }

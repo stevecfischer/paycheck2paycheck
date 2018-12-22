@@ -2,7 +2,8 @@ import keyGen from 'uniqid';
 
 export default {
   state: {
-    access_token: '',
+    messages: [],
+    access_tokens: [],
     item_id: '',
     currentMonth: 'January',
     headerText: 'My Header',

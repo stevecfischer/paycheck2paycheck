@@ -18,7 +18,9 @@ import PlaidLink from './components/PlaidLink';
 import axios from 'axios';
 import CurrentBalance from './components/CurrentBalance';
 import { getCurrentBalance } from './helpers/utils';
-import { firebaseInit , pushState} from './firebase';
+import firebaseInit from './helpers/firebaseSetup';
+
+// import { firebaseInit , pushState} from './firebase';
 
 const styles = theme => ({
   root: {
@@ -40,29 +42,20 @@ class App extends Component {
 
     this.state = initialState.state;
 
-    firebaseInit();
+    // firebaseInit();
   }
 
-
+  componentWillMount() {
+    firebaseInit.bindCollection('access_tokens', {
+      context: this,
+      state: 'access_tokens',
+    });
+  }
 
   componentDidMount() {
     this.setState({
       dayOfMonth: Moment().format('D'),
     });
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    console.log(props, "props");
-    console.log(state, "state");
-    pushState(state);
-
-    const newState = [...state];
-    return newState;
-  }
-
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
   }
 
   handleInputChange = (stream, expenseKey, e) => {
@@ -97,10 +90,11 @@ class App extends Component {
 
   handleOnBalance = () => {
     axios
-      .post(`http://localhost:8000/accounts/balance/get`, {
-        access_token: this.state.access_token,
+      .post(`/accounts/balance/get`, {
+        access_token: this.state.access_tokens[0].access_token,
       })
       .then(res => {
+        // returns array of accounts. each account has a balances key
         const currentBalance = getCurrentBalance(res.data);
         this.setState({
           currentBalance: currentBalance[0],
@@ -108,8 +102,8 @@ class App extends Component {
       });
   };
 
-  setPlainTokens = apiResponse => {
-    this.setState({
+  setPlaidTokens = apiResponse => {
+    firebaseInit.addToCollection('access_tokens', {
       access_token: apiResponse.access_token,
       item_id: apiResponse.item_id,
     });
@@ -128,8 +122,7 @@ class App extends Component {
                 handleOnBalance={this.handleOnBalance}
               />
               <PlaidLink
-                access_token={this.state.access_token || ""}
-                setPlaidTokens={this.setPlainTokens}
+                setPlaidTokens={this.setPlaidTokens}
               />
             </Grid>
           </Grid>

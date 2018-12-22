@@ -13,7 +13,7 @@ export default class CurrentBalance extends Component {
       <Fragment>
         <div className="total total--expenses">
           <h2>{this.props.header}</h2>
-          <p>Available Balance: {availableBalance}</p>
+          <p>Checking Account Balance: {availableBalance}</p>
           <p>Remaining Expenses: {remainingExpenses}</p>
           <p>Actual Balance: {actualBalance}</p>
         </div>
