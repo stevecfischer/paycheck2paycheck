@@ -7,22 +7,18 @@
 <br></br>
 ## Setting up the project environment and build process
 after docker and heroku  have been installed
-`git clone git@github.com:stevecfischer/paycheck2paycheck.git`
-`cd paycheck2paycheck`
-`heroku container:login`
-`heroku create` creates a project (Ex. Creating app... done, ⬢ gentle-woodland-60237)
-`heroku container:push web --app gentle-woodland-60237` pass the app name from above to this command
-`heroku container:release web --app gentle-woodland-60237`
-`heroku open --app gentle-woodland-60237`
-
+- `git clone git@github.com:stevecfischer/paycheck2paycheck.git`
+- `cd paycheck2paycheck`
+- `heroku container:login`
+- `heroku create` creates a project (Ex. Creating app... done, ⬢ gentle-woodland-60237)
+- `heroku container:push web --app gentle-woodland-60237` pass the app name from above to this command
+- `heroku container:release web --app gentle-woodland-60237`
+- `heroku open --app gentle-woodland-60237`
 
 ### running project locally
-`docker-compose up` runs the docker-compose in project root. This will install node_modules for both client and
-server *in the docker image only*. You don't need to install node_modules at all. Docker does it for you.
+`docker-compose up --build` runs the docker-compose.yml in project root.<br />This will install node_modules for both client and
+server in the docker image only. No need to manually install node_modules.
 
-to simulate the production env you can run these commands or `heroku open` (see above) 
-`docker build -t pay2pay .` - build an image
-`docker run -t -i -p 5000:5000 pay2pay` - creates writable container layer and starts it.
 <br></br>
 ## MISC
 recipe for post data

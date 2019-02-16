@@ -118,7 +118,7 @@ class App extends Component {
           <Grid container justify="center" className="Header" spacing={24}>
             <Grid item md={4}>
               <Header
-                header="FISCHERS Money App"
+                header="The App"
                 handleOnBalance={this.handleOnBalance}
               />
               <PlaidLink
