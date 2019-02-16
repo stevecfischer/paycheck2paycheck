@@ -7,16 +7,13 @@
 <br></br>
 ## Setting up the project environment and build process
 after docker and heroku  have been installed
-1. `heroku container:login` Log in to Container Registry
-2. `git clone git@github.com:stevecfischer/paycheck2paycheck.git` clone repo
-   1. `cd <repo>`
-3. `heroku create <image>` create a Heroku app (ex. `paycheck2paycheck`)
-4. not sure if these need to be ran. since we're going to push with docker image
-5. `heroku container:push web` Build the image and push to Container Registry
-6. `heroku container:release web` Then release the image to your app
-7. `heroku open` open the app in your browser
-8. `heroku stack:set heroku-18`
-9. `git push heroku master`
+`git clone git@github.com:stevecfischer/paycheck2paycheck.git`
+`cd paycheck2paycheck`
+`heroku container:login`
+`heroku create` creates a project (Ex. Creating app... done, ⬢ gentle-woodland-60237)
+`heroku container:push web --app gentle-woodland-60237` pass the app name from above to this command
+`heroku container:release web --app gentle-woodland-60237`
+`heroku open --app gentle-woodland-60237`
 
 
 ### running project locally
