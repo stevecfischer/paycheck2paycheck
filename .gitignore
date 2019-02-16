@@ -1,13 +1,17 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules
 
 # testing
 /coverage
 
 # production
 /build
+
+#secrets
+src/configs.js
+server/secrets.js
 
 # misc
 .DS_Store
@@ -19,3 +23,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.idea/
+yarn.lock
