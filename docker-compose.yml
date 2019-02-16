@@ -13,6 +13,7 @@ services:
       - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
     volumes:
       - ./server:/app/server
+      - /app/server/node_modules
     command: yarn server:dev
 
 
