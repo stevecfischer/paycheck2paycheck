@@ -9,13 +9,14 @@
 after docker and heroku  have been installed
 1. `heroku container:login` Log in to Container Registry
 2. `git clone git@github.com:stevecfischer/paycheck2paycheck.git` clone repo
-3. `heroku create` create a Heroku app
-   1. not sure if these need to be ran. since we're going to push with docker image
-   2. `heroku container:push web` Build the image and push to Container Registry
-   3. `heroku container:release web` Then release the image to your app
-   4. `heroku open` open the app in your browser
-4. `docker build -t pay2pay .` build and tag image
-5. `docker push registry.heroku.com/pay2pay/web` push the docker image to heroku
+   1. `cd <repo>`
+3. `heroku create <image>` create a Heroku app (ex. `paycheck2paycheck`)
+4. not sure if these need to be ran. since we're going to push with docker image
+5. `heroku container:push web` Build the image and push to Container Registry
+6. `heroku container:release web` Then release the image to your app
+7. `heroku open` open the app in your browser
+8. `heroku stack:set heroku-18`
+9. `git push heroku master`
 
 
 ### running project locally
