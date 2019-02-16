@@ -21,9 +21,7 @@
     "moment": "^2.19.4",
     "plaid": "^2.10.0",
     "helmet": "^3.13.0",
-    "react-moment": "^0.7.0"
-  },
-  "devDependencies": {
+    "react-moment": "^0.7.0",
     "concurrently": "^3.5.0",
     "express-debug": "^1.1.1"
   }
