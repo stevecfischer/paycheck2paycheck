@@ -16,8 +16,11 @@
     "ejs": "^2.5.x",
     "envvar": "^1.1.x",
     "express": "^4.13.x",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "moment": "^2.19.4",
     "plaid": "^2.10.0",
+    "helmet": "^3.13.0",
     "react-moment": "^0.7.0"
   },
   "devDependencies": {
