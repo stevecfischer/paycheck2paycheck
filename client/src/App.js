@@ -19,10 +19,11 @@ import axios from 'axios';
 import CurrentBalance from './components/CurrentBalance';
 import { getCurrentBalance } from './helpers/utils';
 import firebaseInit from './helpers/firebaseSetup';
+import { FirebaseContext } from './context';
 
 // import { firebaseInit , pushState} from './firebase';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexGrow: 2,
     padding: theme.spacing.unit * 3,
@@ -60,7 +61,7 @@ class App extends Component {
 
   handleInputChange = (stream, expenseKey, e) => {
     const lineItems = this.state[stream];
-    const expenseIndex = lineItems.findIndex(c => c.key === expenseKey);
+    const expenseIndex = lineItems.findIndex((c) => c.key === expenseKey);
     lineItems[expenseIndex][e.target.name] = e.target.value;
 
     this.setState({
@@ -68,7 +69,7 @@ class App extends Component {
     });
   };
 
-  handleAddNewItem = streamType => {
+  handleAddNewItem = (streamType) => {
     const newStreamList = this.state[streamType];
     newStreamList.push({
       key: keyGen(),
@@ -83,7 +84,7 @@ class App extends Component {
   handleRemoveItem = (streamType, expenseKey) => {
     this.setState({
       [streamType]: this.state[streamType].filter(
-        item => item.key !== expenseKey
+        (item) => item.key !== expenseKey,
       ),
     });
   };
@@ -93,7 +94,7 @@ class App extends Component {
       .post(`/accounts/balance/get`, {
         access_token: this.state.access_tokens[0].access_token,
       })
-      .then(res => {
+      .then((res) => {
         // returns array of accounts. each account has a balances key
         const currentBalance = getCurrentBalance(res.data);
         this.setState({
@@ -102,7 +103,13 @@ class App extends Component {
       });
   };
 
-  setPlaidTokens = apiResponse => {
+  handleOnSuccess = (isConnected) => {
+    this.setState({
+      isFirebaseConnected: isConnected,
+    });
+  };
+
+  setPlaidTokens = (apiResponse) => {
     firebaseInit.addToCollection('access_tokens', {
       access_token: apiResponse.access_token,
       item_id: apiResponse.item_id,
@@ -117,13 +124,14 @@ class App extends Component {
         <div className={classes.root}>
           <Grid container justify="center" className="Header" spacing={24}>
             <Grid item md={4}>
-              <Header
-                header="The App"
-                handleOnBalance={this.handleOnBalance}
-              />
-              <PlaidLink
-                setPlaidTokens={this.setPlaidTokens}
-              />
+              <FirebaseContext.Provider value={this.state.isFirebaseConnected}>
+                <Header text="The App" handleOnBalance={this.handleOnBalance}>
+                  <PlaidLink
+                    setPlaidTokens={this.setPlaidTokens}
+                    handleOnSuccess={this.handleOnSuccess}
+                  />
+                </Header>
+              </FirebaseContext.Provider>
             </Grid>
           </Grid>
           <Grid

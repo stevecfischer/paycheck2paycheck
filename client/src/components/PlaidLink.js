@@ -17,6 +17,7 @@ export default class PlaidLink extends Component {
       })
       .then(res => {
         this.props.setPlaidTokens(res.data);
+        this.props.handleOnSuccess(true);
         // get access token and send it to balance
         // axios
         //   .post(`http://localhost:8000/accounts/balance/get`, {
@@ -31,7 +32,6 @@ export default class PlaidLink extends Component {
     // send token to client server
     console.log(token, 'token'); //public-sandbox-a0e872ee-392f-435d-bae3-65663e57f4dc
     console.log(metadata, 'metadata'); // {}
-
   }
 
   handleOnExit(x, y) {

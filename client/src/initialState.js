@@ -2,6 +2,7 @@ import keyGen from 'uniqid';
 
 export default {
   state: {
+    isFirebaseConnected: false,
     messages: [],
     access_tokens: [],
     item_id: '',
