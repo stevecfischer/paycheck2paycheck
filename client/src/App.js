@@ -5,9 +5,6 @@ import keyGen from 'uniqid';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-// import ReactMoment from 'react-moment';
-import * as Moment from 'moment';
-
 // function components
 import Streams from './components/Streams';
 import Totals from './components/Totals';
@@ -42,20 +39,12 @@ class App extends Component {
     super(props);
 
     this.state = initialState.state;
-
-    // firebaseInit();
   }
 
   componentWillMount() {
     firebaseInit.bindCollection('access_tokens', {
       context: this,
       state: 'access_tokens',
-    });
-  }
-
-  componentDidMount() {
-    this.setState({
-      dayOfMonth: Moment().format('D'),
     });
   }
 
@@ -103,7 +92,7 @@ class App extends Component {
       });
   };
 
-  handleOnSuccess = (isConnected) => {
+  handlesFirebaseConnected = (isConnected) => {
     this.setState({
       isFirebaseConnected: isConnected,
     });
@@ -128,7 +117,7 @@ class App extends Component {
                 <Header text="The App" handleOnBalance={this.handleOnBalance}>
                   <PlaidLink
                     setPlaidTokens={this.setPlaidTokens}
-                    handleOnSuccess={this.handleOnSuccess}
+                    handlesFirebaseConnected={this.handlesFirebaseConnected}
                   />
                 </Header>
               </FirebaseContext.Provider>
@@ -153,7 +142,8 @@ class App extends Component {
             <Grid item md={4}>
               <CurrentBalance
                 header="Current State of affairs"
-                {...this.state}
+                availableBalances={this.state.currentBalance.balances.available}
+                expenses={this.state.expenses}
               />
               <Totals
                 header="Total Income"

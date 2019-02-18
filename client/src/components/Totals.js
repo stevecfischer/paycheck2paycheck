@@ -1,27 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { currencyFormatter, getExpensesTotal } from '../helpers/utils';
 
-export default class Totals extends Component {
+const Totals = (props) => {
+  const { streamType } = props;
+  const firstHalf = getExpensesTotal(props[streamType], 'first');
+  const secondHalf = getExpensesTotal(props[streamType], 'second');
 
-  render() {
-    const {
-      streamType
-    } = this.props;
-    const firstHalf = getExpensesTotal(this.props[streamType], 'first');
-    const secondHalf = getExpensesTotal(this.props[streamType], 'second');
+  return (
+    <Fragment>
+      <div className="total total--expenses">
+        <h2>{props.header}</h2>
+        <p>first half</p>
+        <p>{currencyFormatter(firstHalf)}</p>
+        <p>second half</p>
+        <p>{currencyFormatter(secondHalf)}</p>
+      </div>
+    </Fragment>
+  );
+};
 
-    return (
-      <Fragment>
-        <div className="total total--expenses">
-          <h2>{this.props.header}</h2>
-          <p>first half</p>
-          <p>{currencyFormatter(firstHalf)}</p>
-          <p>second half</p>
-          <p>{currencyFormatter(secondHalf)}</p>
-        </div>
-      </Fragment>
-    );
-  }
-}
-
-Totals.displayName = 'Totals';
+export default Totals;

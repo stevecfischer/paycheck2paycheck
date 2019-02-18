@@ -1,20 +1,19 @@
-import React, { Component, Fragment } from 'react';
+import React, {Fragment } from 'react';
 import { currencyFormatter, getExpensesTotal } from '../helpers/utils';
 
-export default class Gross extends Component {
-  render() {
+const Gross = (props) => {
     const totalExpenseFirstHalf = getExpensesTotal(
-      this.props.expenses,
+      props.expenses,
       'first'
     );
     const totalExpenseSecondHalf = getExpensesTotal(
-      this.props.expenses,
+      props.expenses,
       'second'
     );
 
-    const totalIncomeFirstHalf = getExpensesTotal(this.props.incomes, 'first');
+    const totalIncomeFirstHalf = getExpensesTotal(props.incomes, 'first');
     const totalIncomeSecondHalf = getExpensesTotal(
-      this.props.incomes,
+      props.incomes,
       'second'
     );
 
@@ -25,7 +24,7 @@ export default class Gross extends Component {
     return (
       <Fragment>
         <div className="total total--expenses">
-          <h2>{this.props.header}</h2>
+          <h2>{props.header}</h2>
           <p>first half</p>
           <p>{currencyFormatter(firstHalfGross)}</p>
           <p>second half</p>
@@ -33,7 +32,6 @@ export default class Gross extends Component {
         </div>
       </Fragment>
     );
-  }
-}
+};
 
-Gross.displayName = 'Gross';
+export default Gross

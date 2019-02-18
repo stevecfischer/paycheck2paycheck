@@ -1,25 +1,23 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {currencyFormatter, getRemainingExpenses} from "../helpers/utils";
+import * as Moment from 'moment';
 
-export default class CurrentBalance extends Component {
+const CurrentBalance = (props) => {
+  const availableBalance = props.availableBalances;
+  const dayOfMonth = Moment().format('D');
+  const remainingExpenses = getRemainingExpenses(props.expenses, dayOfMonth);
+  const actualBalance = currencyFormatter(( availableBalance - remainingExpenses));
 
-  render() {
-    const { available } = this.props.currentBalance.balances;
-    const availableBalance = available;
-    const remainingExpenses = getRemainingExpenses(this.props.expenses,this.props.dayOfMonth);
-    const actualBalance = currencyFormatter(( availableBalance - remainingExpenses));
-
-    return (
-      <Fragment>
-        <div className="total total--expenses">
-          <h2>{this.props.header}</h2>
-          <p>Checking Account Balance: {availableBalance}</p>
-          <p>Remaining Expenses: {remainingExpenses}</p>
-          <p>Actual Balance: {actualBalance}</p>
-        </div>
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <div className="total total--expenses">
+        <h2>{props.header}</h2>
+        <p>Checking Account Balance: {availableBalance}</p>
+        <p>Remaining Expenses: {remainingExpenses}</p>
+        <p>Actual Balance: {actualBalance}</p>
+      </div>
+    </Fragment>
+  )
 }
 
-CurrentBalance.displayName = 'CurrentBalance';
+export default CurrentBalance;

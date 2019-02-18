@@ -17,7 +17,7 @@ export default class PlaidLink extends Component {
       })
       .then(res => {
         this.props.setPlaidTokens(res.data);
-        this.props.handleOnSuccess(true);
+        this.props.handlesFirebaseConnected(true);
         // get access token and send it to balance
         // axios
         //   .post(`http://localhost:8000/accounts/balance/get`, {
